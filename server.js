@@ -80,6 +80,8 @@ app.post('/useractivity/add',
 app.get('/activities', actCtrl.index); // full list of activities, for user to choose from
 app.post('/activity/add', actCtrl.add, uaCtrl.add, (req, res) => { res.sendStatus(200); });// to add a new activity
 
+// users by activity
+app.get('/useractivity/userbyact/:activity', uaCtrl.userByAct); 
 
 // app.put('/useractivity/close', uaCtrl.close, (req, res) => {res.end() }); // to mark activity as done
 

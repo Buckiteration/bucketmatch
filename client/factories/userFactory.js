@@ -36,6 +36,11 @@ function UserFactory($http) {
     return userId;
   };
 
+//returns the curently loggedin user
+  userData.getUsername = function() {
+    return username;
+  };  
+
   userData.updateUser = function(user, pass) {
     console.log('Current user is now', user, pass)
     username = user;

@@ -55,4 +55,16 @@ function queryDataParser(queryData, querySelector) {
   return queryString.join(",");
 }
 
-module.exports = { index, add, findByAct };
+
+function userByAct(req, res, next) { // finds all users by activity
+  Activity.sequelize.query('SELECT "username" from "users" join "useractivities" on ' +
+  '("useractivities"."userId" = "users"."_id") join "activities" on ("activities"."_id" = ' +
+  '"useractivities"."activityId") where "actname" =\'' + req.params.activity + '\'')
+  .then((data) => {
+    const output = { users: data[0] };
+    res.json(output);
+    next();
+  });
+}
+
+module.exports = { index, add, findByAct, userByAct };

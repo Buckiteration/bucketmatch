@@ -6,8 +6,12 @@ function activitiescontroller($scope, $location, EventFactory, UserFactory) {
   $scope.events = [];
   $scope.error = '';
 
+  $scope.newDreamName = '';
+  $scope.newDreamDescription = '';
+
   function loadActivities() {
     EventFactory.fetchActivities().then(response => {
+      // Each event has the format {actname, actdesc}
       $scope.events = response.data;
     });
   }
@@ -17,11 +21,12 @@ function activitiescontroller($scope, $location, EventFactory, UserFactory) {
     $location.path('createnew')
   };
 
-  $scope.createNewActivity = function (actname, actdesc) {
-    console.log('createNewActivity', this.actname, this.actdesc);
-    EventFactory.newActivity(UserFactory.getUserId(), this.actname, this.actdesc).then((res) => {
-      $location.path('profile');
-    });
+  $scope.createNewActivity = function (name, description) {
+    console.log('createNewActivity', name, description);
+    EventFactory.newActivity(UserFactory.getUserId(), name, description)
+      .then((res) => {
+        $location.path('profile');
+      });
 
   };
 

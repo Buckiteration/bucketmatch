@@ -25,7 +25,7 @@ function EventFactory($http, $location) {
   };
 
   obj.fetchMatches = function () {
-    return $http.get('http://localhost:3000/useractivity/findbyact/' + event);
+    return $http.get('http://localhost:3000/useractivity/userbyact/' + event);
   };
 
   obj.fetchActivities = function () {
