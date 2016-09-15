@@ -3,9 +3,19 @@ to *any* of the activites that are currently associated with the
 currently logged-in user -->
 <nav-bar></nav-bar>
 <div class="actContainer">
-  <h1>Your matches</h1>
-  <div class="clickable" ng-click='showUserProfile()' ng-repeat="match in matches">
-    <!-- Clicking on an individual routes to their profile -->
-    {{match.username}}
+  <div class="actContainer">
+    <div class='list'>
+    <ul class="list-group list-unstyled" >
+     <li>
+       <h3 class="list-group-item active">
+         All of you Bucket List Activity Matches
+       </h3>
+     </li>
+     <li class="flex-list" ng-click='showUserProfile()' ng-repeat="match in matches">
+       <div class="flex-list-child"><img class=" img-thumbnail" ng-src={{match.username.profilepic}} alt="" /></div>
+       <a class="flex-list-child clickable listItems list-group-item">{{match.username.username}}</a>
+     </li>
+    </ul>
+    </div>
   </div>
 </div>

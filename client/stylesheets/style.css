@@ -84,6 +84,15 @@ header {
   border: solid 1px #333;
 }
 
+.flex-list {
+  display:flex;
+}
+
+.flex-list-child {
+  width:50%;
+  height: auto;
+}
+
 .usercontainer, .actContainer {
   width: 100%;
   margin: 0 auto;
