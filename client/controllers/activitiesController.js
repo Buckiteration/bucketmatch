@@ -11,8 +11,15 @@ function activitiescontroller($scope, $location, EventFactory, UserFactory) {
 
   function loadActivities() {
     EventFactory.fetchActivities().then(response => {
+      console.log('Got activities');
       // Each event has the format {actname, actdesc}
-      $scope.events = response.data;
+      const userActivities = UserFactory.getActivityNames();
+      console.log(userActivities);
+      console.log(response.data);
+      
+      $scope.events = response.data.filter(activity => {
+        return !userActivities.includes(activity.actname);
+      });
     });
   }
 
@@ -35,6 +42,7 @@ function activitiescontroller($scope, $location, EventFactory, UserFactory) {
       .then(response => {
         console.log(response);
         if (response.data.error) $scope.error = response.data.error;
+        $location.path('profile');
       });
   };
 
