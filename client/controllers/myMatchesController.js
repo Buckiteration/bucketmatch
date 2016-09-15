@@ -11,6 +11,7 @@ function myMatchesController($location, $scope, UserFactory, ClickedFactory) {
 
   UserFactory.getMyMatches()
     .then(response => {
+      console.log(response.data)
       $scope.matches = response.data;
     })
     .catch(error => {

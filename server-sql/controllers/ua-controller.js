@@ -33,7 +33,7 @@ function findByAct(req, res, next) { // finds all users by activity
     return UserActivity.sequelize.query('SELECT DISTINCT useractivities."userId" FROM useractivities WHERE useractivities."activityId" IN (' + queryDataParser(queryData, "activityId") + ')')
   })
   .then((queryData) => {
-    return UserActivity.sequelize.query('SELECT username FROM users WHERE _ID IN (' + queryDataParser(queryData, "userId") + ')')
+    return UserActivity.sequelize.query('SELECT DISTINCT username,profilepic FROM users WHERE _ID IN (' + queryDataParser(queryData, "userId") + ')')
   })
   .then((queryData) => {
     let myMatches = [];
