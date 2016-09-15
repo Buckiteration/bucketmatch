@@ -20,6 +20,8 @@ function UserFactory($http) {
   let bioData = '';
   let bioImage = '';
 
+  let storedActivityNames = [];
+
   userData.fetch = function() {
     return $http.get('http://localhost:3000/user/' + username + '/' + password);
   };
@@ -30,6 +32,16 @@ function UserFactory($http) {
 
   userData.storeUserId = function(newUserId) {
     userId = newUserId;
+  };
+
+  userData.storeActivityNames = function(activities) {
+    activities.forEach(activity => {
+      storedActivityNames.push(activity.actname);
+    });
+  };
+
+  userData.getActivityNames = function() {
+    return Array.from(storedActivityNames);
   };
 
   userData.getUserId = function() {
