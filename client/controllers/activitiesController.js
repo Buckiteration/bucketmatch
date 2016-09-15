@@ -35,6 +35,7 @@ function activitiescontroller($scope, $location, EventFactory, UserFactory) {
       .then(response => {
         console.log(response);
         if (response.data.error) $scope.error = response.data.error;
+        $location.path('profile');
       });
   };
 
