@@ -7,7 +7,7 @@ function ClickedFactory($location, $http) {
   let clicked = '';
 
   userInfo.setUser = function (data) {
-    clicked = data;
+    clicked = data.username;
     $location.path('contact');
   };
 
