@@ -10,8 +10,7 @@ function usercontroller($scope, $location, $http, EventFactory, UserFactory,Uplo
   $scope.userid = '';
   $scope.username = '';
   $scope.bio = '';
-  $scope.bioImage = '';
-
+  $scope.bioImage = '../stylesheets/bucket.png';
 
   // Question: Figure out where this.activity is coming from
   // Answer: It is coming from the ng-repeat="activity in activities"
