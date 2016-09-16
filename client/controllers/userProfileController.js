@@ -58,6 +58,7 @@ function usercontroller($scope, $location, $http, EventFactory, UserFactory,Uplo
       $scope.username = data.data.user.username;
 
       UserFactory.storeUserId($scope.userid);
+      UserFactory.storeActivityNames($scope.activities);
     });
   }
   loadPage();
