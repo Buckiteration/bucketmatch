@@ -1,13 +1,42 @@
 <!-- This is the detail view for a given activity, showing you all
 of the other users who are matched to the same activity-->
 <nav-bar></nav-bar>
-<div class="actContainer">
-  <a ng-href='/#/profile'>Back to your Profile</a>
-  <h1> Here are your matches </h1>
-  <div class="list clickable" ng-click='GetClickedUser()' ng-repeat="user in users" >
-    <!--clicking person routes to user's profile-->
-    {{user.username}}
+<div class="usercontainer">
+  <header>
+    <h1>{{username | uppercase }}'s Bucket List</h1>
+  </header>
+  <div class="profilepic" >
+    <div class="biopic">
+    <div class="image"><img class="img-thumbnail" ng-src={{bioImage}} /></div>
+        <div class="overlay">
+          <button class="bt1 btn btn-default" type="file" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                CHANGE PIC
+          </button>
+        </div>  
+    </div>
+    <div class='desc well'>
+    <h4 class="btn btn-default" ng-click="showDetails = ! showDetails">Update bio</h4>
+      <p><strong>{{username | uppercase }}'s BIO:</strong></p>
+      <p>{{bio}}</p>
+    </div>
+    <form novalidate ng-show="showDetails">
+      <input ng-model="bio">
+      <!-- The method for submitting the data goes on the button. -->
+      <input class="btn btn-default" type="submit" ng-click="updateBio(bio); showDetails = ! showDetails" value="Click to submit">
+    </form>
   </div>
-  <!--div class="inspopic">
+  <!--div class='addDreamButton'>
+    <button class="btn btn-large btn-default" ng-click="addActivity()">Add Activity</button>
   </div-->
+   <div class='list'>
+  <ul class="list-group list-unstyled" >
+    <li>
+      <h3 class="list-group-item active">
+        People also interested in {{activityName | uppercase}}
+      </h3>
+    </li>
+    <li ng-click='GetClickedUser()' ng-repeat='user in users'>
+      <a class="clickable listItems list-group-item">{{user.username}}</a>
+  </ul>
+  </div>
 </div>

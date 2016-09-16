@@ -18,6 +18,14 @@ function MatchController($location, $scope, EventFactory, ClickedFactory, UserFa
       }
       $scope.users = usersMatches;
     });
+    //injecting user profile info into $scope
+    UserFactory.fetch().then((data) => {
+      $scope.bioImage = data.data.user.profilepic;
+      $scope.bio = data.data.user.bio;      
+      $scope.username = data.data.user.username;            
+    });
+      $scope.activityName = EventFactory.getActivityData().activityName;
+      $scope.activityDescription = EventFactory.getActivityData().activityDescription;
   }
   getOtherUsers();
 

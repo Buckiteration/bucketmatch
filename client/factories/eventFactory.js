@@ -9,16 +9,24 @@ angular
 function EventFactory($http, $location) {
   let obj = {};
   let event = '';
+  let eventDescription = '';
   // Question: Why is there a user here? Where is this being used?
   // Answer: This user is really the user's ID from the sql database.
   // Shouldn't this information be held in the UserFactory?
   let user = '';
   let matchAct;
 
-  obj.updateEvent = function (data) {
-    event = data;
+  obj.updateEvent = function (activityName, activityDescription) {
+    event = activityName;
+    eventDescription = activityDescription;
     $location.path('activities');
   };
+
+  //get name of activity (event) and its description
+  obj.getActivityData = function () {
+    return {activityName: event, activityDescription: eventDescription};
+  };
+
 
   obj.updateUser = function (data) {
     user = data;

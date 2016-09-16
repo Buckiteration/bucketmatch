@@ -16,7 +16,8 @@ function usercontroller($scope, $location, $http, EventFactory, UserFactory,Uplo
   // Answer: It is coming from the ng-repeat="activity in activities"
   // in the userprofile.html partial
   $scope.activityView = function () {
-    EventFactory.updateEvent(this.activity.actname);
+    console.log('thats our activity', this.activity);
+    EventFactory.updateEvent(this.activity.actname,this.activity.actdesc);
   };
 
   $scope.addActivity = function() {
